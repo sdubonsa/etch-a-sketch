@@ -1,0 +1,9 @@
+* {
+    border: 1px solid black;
+}
+
+.drawing-area {
+    width: 500px;
+    height: 500px;
+    display: grid;
+}
