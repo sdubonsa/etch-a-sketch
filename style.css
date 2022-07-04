@@ -1,9 +1,55 @@
-* {
-    border: 1px solid black;
+/* GENERAL STYLING */
+body {
+    display: flex;
+    font-size: 1rem;
+    padding-top: 2rem;
+    font-family: 'BEBAS NEUE', Impact;
+}
+
+/* MENU STYLING */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 5rem;
+    align-items: center;
+}
+
+.canvas-size {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .drawing-area {
     width: 500px;
     height: 500px;
     display: grid;
+}
+
+.size {
+    text-align: center;
+}
+
+.clrButton, #color-div {
+    cursor: pointer;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.color-picker {
+    border: 0;
+    padding: 0;
+    width: 200%;
+    height: 200%;
+    cursor: pointer;
+    transform: translate(-25%, -25%)
+}
+
+
+/* DRAWING AREA STYLING */
+.drawing-area {
+    border: 1px solid black;
 }

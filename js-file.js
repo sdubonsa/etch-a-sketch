@@ -11,13 +11,7 @@ createDrawingArea(16)
 
 // EVENT HANDLERS
 colorPicker.addEventListener('change', () => {
-    const pixel = document.querySelectorAll('.pixel')
-
-    for (let i = 0; i < pixel.length; i++) {
-        pixel[i].addEventListener('mouseover', () => {
-            pixel[i].style.backgroundColor = colorPicker.value
-        })
-    }
+    triggerDrawing(colorPicker.value)
 })
 
 slider.oninput = function() {
@@ -29,6 +23,10 @@ slider.oninput = function() {
 clrButton.onclick = function() {
     createDrawingArea(slider.value)
 }
+
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 // FUNCTIONS
 function createDrawingArea (gridSize) {
@@ -43,16 +41,16 @@ function createDrawingArea (gridSize) {
     for(let i = 0; i < gridSize * gridSize; i++) {
         const div = document.createElement('div')
         div.classList.add('pixel')
+        div.addEventListener('mouseover', penColor)
+        div.addEventListener('mousedown', penColor)
         canvas.appendChild(div)
     }
 
     drawingArea.appendChild(canvas)
+}
 
-    const pixel = document.querySelectorAll('.pixel')
+function penColor(e) {
+    if(e.type === 'mouseover' && !mouseDown) return
 
-    for (let i = 0; i < pixel.length; i++) {
-        pixel[i].addEventListener('mouseover', () => {
-            pixel[i].style.backgroundColor = colorPicker.value
-        })
-    }
+    e.target.style.backgroundColor = colorPicker.value
 }
