@@ -4,6 +4,7 @@ let grid = 'auto'
 
 const slider = document.querySelector('.slider')
 const sliderText = document.querySelector('.size')
+const clrButton = document.querySelector('.clrButton')
 
 createDrawingArea(16)
 
@@ -11,7 +12,11 @@ slider.oninput = function() {
     console.log(slider.value)
     createDrawingArea(slider.value)
     sliderText.innerHTML = slider.value + ' x ' + slider.value
-  } 
+} 
+
+clrButton.onclick = function() {
+    createDrawingArea(slider.value)
+}
 
 function createDrawingArea (gridSize) {
     drawingArea.removeChild(drawingArea.firstChild)
